@@ -13,7 +13,7 @@ export declare class UserService {
         check: boolean;
         userFind: any[];
     }>;
-    updateProfile: (idUser: any, newFullName: any, newJob: any, newAddress: any, newPhone: any, newEmail: any) => Promise<{
+    updateProfile: (idUser: any, newFullName: any, newJob: any, newAddress: any, newPhone: any, newEmail: any, newAvatar: any) => Promise<{
         userFind: any[];
     }>;
 }
