@@ -3,4 +3,5 @@ export declare class HomesDaysService {
     constructor();
     createHomesDays: (time: any, homeId: any) => Promise<any>;
     findByHomesDays: (id: any) => Promise<any>;
+    findByTime: (data: any) => Promise<any>;
 }
