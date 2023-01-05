@@ -6,7 +6,18 @@ const homes_1 = require("../model/homes");
 class HomeService {
     constructor() {
         this.getAll = async () => {
-            return await this.homeRepository.find();
+            return await this.homeRepository.findBy({ status: "Available" });
+        };
+        this.changeStatus = async (id, userId) => {
+            let home = await this.homeRepository.findBy({ id: id });
+            if (home[0].status === 'Available') {
+                await this.homeRepository.update({ id: id }, { status: 'Repair' });
+            }
+            else {
+                await this.homeRepository.update({ id: id }, { status: 'Available' });
+            }
+            let homes = await this.homeRepository.findBy({ userId: userId });
+            return homes;
         };
         this.createHome = async (home) => {
             let homeC = await this.homeRepository.save(home);
@@ -20,14 +31,16 @@ class HomeService {
                                                      where address like '%${addressFind}%'
                                                        AND bedroom like '%${quantityBedroom}%'
                                                        AND bathroom like '%${quantityBathroom}%'
-                                                       AND price = '${price}'`);
+                                                       AND price = '${price}'
+                                                       AND status = 'Available'`);
             }
             else {
                 homes = await this.homeRepository.query(`select *
                                                      from homes
                                                      where address like '%${addressFind}%'
                                                        AND bedroom like '%${quantityBedroom}%'
-                                                       AND bathroom like '%${quantityBathroom}%'`);
+                                                       AND bathroom like '%${quantityBathroom}%'
+                                                       AND status = 'Available'`);
             }
             return homes;
         };
@@ -45,13 +58,14 @@ class HomeService {
                                                        avatar
                                                 from homes
                                                          join categories c on homes.categoryId = c.id
-                                                where homes.id = ${id}`);
+                                                where homes.id = ${id}
+                                                  AND status = 'Available'`);
         };
         this.findListHome = async (id) => {
             return await this.homeRepository.findBy({ userId: id });
         };
         this.findByCategory = async (id) => {
-            return await this.homeRepository.findBy({ categoryId: id });
+            return await this.homeRepository.findBy({ categoryId: id, status: "Available" });
         };
         this.remove = async (idDelete) => {
             await this.homeRepository.delete({ id: idDelete });

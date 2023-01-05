@@ -14,4 +14,5 @@ exports.homeRouter.get('/:id', homeController_1.default.findById);
 exports.homeRouter.get('/list-home/:id', homeController_1.default.findListHomeByUserId);
 exports.homeRouter.get('/find-by-category/:id', homeController_1.default.findByCategory);
 exports.homeRouter.delete('/:id', homeController_1.default.remove);
+exports.homeRouter.put('/:id', homeController_1.default.changeStatus);
 //# sourceMappingURL=homeRouter.js.map

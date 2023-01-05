@@ -86,6 +86,17 @@ class HomeController {
                 });
             }
         };
+        this.changeStatus = async (req, res) => {
+            try {
+                let homes = await this.homeService.changeStatus(req.params.id, req.body.userId);
+                res.json(homes);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.homeService = new homeService_1.HomeService();
     }
 }
