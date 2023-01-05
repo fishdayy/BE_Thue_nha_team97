@@ -87,7 +87,7 @@ class UserController {
         };
         this.updateProfile = async (req, res) => {
             try {
-                let user = await this.userService.updateProfile(req.params.id, req.body.newFullName, req.body.newJob, req.body.newAddress, req.body.newPhone, req.body.newEmail);
+                let user = await this.userService.updateProfile(req.params.id, req.body.newFullName, req.body.newJob, req.body.newAddress, req.body.newPhone, req.body.newEmail, req.body.newAvatar);
                 res.json({
                     user,
                     mess: "Cập nhật thành công"

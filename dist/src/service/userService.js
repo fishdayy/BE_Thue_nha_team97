@@ -90,7 +90,7 @@ class UserService {
             }
             return user;
         };
-        this.updateProfile = async (idUser, newFullName, newJob, newAddress, newPhone, newEmail) => {
+        this.updateProfile = async (idUser, newFullName, newJob, newAddress, newPhone, newEmail, newAvatar) => {
             let user = {
                 userFind: []
             };
@@ -99,7 +99,8 @@ class UserService {
                 job: newJob,
                 address: newAddress,
                 phone: newPhone,
-                email: newEmail
+                email: newEmail,
+                avatar: newAvatar
             });
             let userFind = await this.userRepository.findBy({ id: idUser });
             user.userFind = userFind;

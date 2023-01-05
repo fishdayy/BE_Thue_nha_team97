@@ -97,7 +97,7 @@ export class UserService {
         return user
     }
 
-    updateProfile = async (idUser, newFullName, newJob, newAddress, newPhone, newEmail) => {
+    updateProfile = async (idUser, newFullName, newJob, newAddress, newPhone, newEmail,newAvatar) => {
         let user = {
             userFind: []
         }
@@ -106,7 +106,8 @@ export class UserService {
             job: newJob,
             address: newAddress,
             phone: newPhone,
-            email: newEmail
+            email: newEmail,
+            avatar:newAvatar
         });
         let userFind = await this.userRepository.findBy({id: idUser})
         user.userFind = userFind
