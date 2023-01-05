@@ -9,4 +9,5 @@ export declare class HomeService {
     findListHome: (id: any) => Promise<any>;
     findByCategory: (id: any) => Promise<any>;
     remove: (idDelete: any) => Promise<void>;
+    findTop4: () => Promise<any>;
 }

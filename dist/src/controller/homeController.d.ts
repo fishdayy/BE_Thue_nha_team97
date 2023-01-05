@@ -10,6 +10,7 @@ export declare class HomeController {
     findByCategory: (req: Request, res: Response) => Promise<void>;
     remove: (req: Request, res: Response) => Promise<void>;
     changeStatus: (req: Request, res: Response) => Promise<void>;
+    findTop4: (req: Request, res: Response) => Promise<void>;
 }
 declare const _default: HomeController;
 export default _default;

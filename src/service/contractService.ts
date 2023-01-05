@@ -28,4 +28,11 @@ export class ContractService {
                                                              join homes h on contracts.homeId = h.id
                                                     where contracts.userId = ${id};`)
     }
+
+    findByUserCreate = async (id) => {
+        return await this.contractRepository.query(`select totalPrice, timeStart, timeEnd, contracts.userId, h.name, u.fullName
+                                                    from contracts
+                                                             join homes h on contracts.homeId = h.id join users u on contracts.userId = u.id
+                                                    where h.userId = ${id}`)
+    }
 }

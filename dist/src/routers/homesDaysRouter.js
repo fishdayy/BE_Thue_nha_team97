@@ -8,5 +8,5 @@ const express_1 = __importDefault(require("express"));
 const homesDaysController_1 = __importDefault(require("../controller/homesDaysController"));
 exports.homesDaysRouter = (0, express_1.default)();
 exports.homesDaysRouter.post('/', homesDaysController_1.default.createHomesDays);
-exports.homesDaysRouter.get('/check', homesDaysController_1.default.checkHomesDays);
+exports.homesDaysRouter.post('/check', homesDaysController_1.default.checkHomesDays);
 //# sourceMappingURL=homesDaysRouter.js.map

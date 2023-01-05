@@ -81,4 +81,12 @@ export class HomeService {
     remove = async (idDelete) => {
         await this.homeRepository.delete({id: idDelete});
     }
+
+    findTop4 = async () => {
+        return await this.homeRepository.query(`select h.price, h.id, h.address, h.avatar, contracts.homeId, h.name, COUNT(homeId) as hire
+                                                from contracts
+                                                         join homes h on contracts.homeId = h.id
+                                                group by contracts.homeId
+                                                order by hire desc limit 4`)
+    }
 }

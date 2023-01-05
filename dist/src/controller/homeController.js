@@ -97,6 +97,17 @@ class HomeController {
                 });
             }
         };
+        this.findTop4 = async (req, res) => {
+            try {
+                let homes = await this.homeService.findTop4();
+                res.json(homes);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.homeService = new homeService_1.HomeService();
     }
 }

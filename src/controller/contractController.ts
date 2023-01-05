@@ -44,6 +44,17 @@ export class ContractController {
         }
     }
 
+    findByUserCreate = async (req: Request, res: Response) => {
+        try {
+            let contracts = await this.contractService.findByUserCreate(req.params.id)
+            res.json(contracts)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
+
 
 }
 

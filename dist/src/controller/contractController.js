@@ -40,6 +40,17 @@ class ContractController {
                 });
             }
         };
+        this.findByUserCreate = async (req, res) => {
+            try {
+                let contracts = await this.contractService.findByUserCreate(req.params.id);
+                res.json(contracts);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.contractService = new contractService_1.ContractService();
     }
 }

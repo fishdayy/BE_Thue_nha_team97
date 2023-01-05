@@ -19,6 +19,12 @@ class ContractService {
                                                              join homes h on contracts.homeId = h.id
                                                     where contracts.userId = ${id};`);
         };
+        this.findByUserCreate = async (id) => {
+            return await this.contractRepository.query(`select totalPrice, timeStart, timeEnd, contracts.userId, h.name, u.fullName
+                                                    from contracts
+                                                             join homes h on contracts.homeId = h.id join users u on contracts.userId = u.id
+                                                    where h.userId = ${id}`);
+        };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.contractRepository = data_source_1.AppDataSource.getRepository(contracts_1.Contracts);
             this.homeRepository = data_source_1.AppDataSource.getRepository(homes_1.Homes);

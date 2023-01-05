@@ -100,6 +100,17 @@ export class HomeController {
             })
         }
     }
+
+    findTop4 = async (req: Request, res: Response) => {
+        try {
+            let homes = await this.homeService.findTop4();
+            res.json(homes)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
 }
 
 export default new HomeController();
