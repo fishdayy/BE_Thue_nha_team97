@@ -25,6 +25,10 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
 ], HomesDays.prototype, "time", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'int' }),
+    __metadata("design:type", Number)
+], HomesDays.prototype, "idContract", void 0);
 HomesDays = __decorate([
     (0, typeorm_1.Entity)()
 ], HomesDays);
