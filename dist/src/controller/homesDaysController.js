@@ -8,6 +8,7 @@ class HomesDaysController {
             let timeStart = req.body.timeStart;
             let timeEnd = req.body.timeEnd;
             let homeId = req.body.homeId;
+            let idContract = req.body.idContract;
             let dateArray = [];
             let currentDate = new Date(timeStart);
             while (currentDate <= new Date(timeEnd)) {
@@ -17,7 +18,7 @@ class HomesDaysController {
             for (const item of dateArray) {
                 let time = item.toString();
                 try {
-                    await this.homesDaysService.createHomesDays(time, homeId);
+                    await this.homesDaysService.createHomesDays(time, homeId, idContract);
                 }
                 catch (e) {
                     res.json({
@@ -87,6 +88,12 @@ class HomesDaysController {
                     mess: e.message
                 });
             }
+        };
+        this.deleteHomesDays = async (req, res) => {
+            await this.homesDaysService.removeHomesDays(req.body);
+            res.json({
+                mess: "Delete success",
+            });
         };
         this.homesDaysService = new homesDaysService_1.HomesDaysService();
     }

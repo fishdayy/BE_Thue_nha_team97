@@ -8,4 +8,6 @@ export class HomesDays{
     public homeId: number;
     @Column({type: 'varchar'})
     public time: string;
+    @Column({type: 'int'})
+    public idContract: number;
 }
