@@ -11,4 +11,5 @@ exports.contractRouter.get('/', contractController_1.default.showContracts);
 exports.contractRouter.get('/:id', contractController_1.default.findByUserId);
 exports.contractRouter.post('/', contractController_1.default.createContract);
 exports.contractRouter.get('/show/:id', contractController_1.default.findByUserCreate);
+exports.contractRouter.post('/income', contractController_1.default.getIncome);
 //# sourceMappingURL=contractRouter.js.map

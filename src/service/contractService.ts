@@ -30,9 +30,21 @@ export class ContractService {
     }
 
     findByUserCreate = async (id) => {
-        return await this.contractRepository.query(`select totalPrice, timeStart, timeEnd, contracts.userId, h.name, u.fullName
+        return await this.contractRepository.query(`select totalPrice,
+                                                           timeStart,
+                                                           timeEnd,
+                                                           contracts.userId,
+                                                           h.name,
+                                                           u.fullName
                                                     from contracts
-                                                             join homes h on contracts.homeId = h.id join users u on contracts.userId = u.id
+                                                             join homes h on contracts.homeId = h.id
+                                                             join users u on contracts.userId = u.id
                                                     where h.userId = ${id}`)
+    }
+
+    getIncome = async (time) => {
+        return await this.contractRepository.query(`select SUM(totalPrice) as income
+                                                    from contracts
+                                                    where timeEnd like '${time}%'`)
     }
 }

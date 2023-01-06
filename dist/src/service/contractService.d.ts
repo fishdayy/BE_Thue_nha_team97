@@ -6,4 +6,5 @@ export declare class ContractService {
     createContract: (contract: any) => Promise<any>;
     findByUserId: (id: any) => Promise<any>;
     findByUserCreate: (id: any) => Promise<any>;
+    getIncome: (time: any) => Promise<any>;
 }

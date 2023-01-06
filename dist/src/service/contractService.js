@@ -20,10 +20,21 @@ class ContractService {
                                                     where contracts.userId = ${id};`);
         };
         this.findByUserCreate = async (id) => {
-            return await this.contractRepository.query(`select totalPrice, timeStart, timeEnd, contracts.userId, h.name, u.fullName
+            return await this.contractRepository.query(`select totalPrice,
+                                                           timeStart,
+                                                           timeEnd,
+                                                           contracts.userId,
+                                                           h.name,
+                                                           u.fullName
                                                     from contracts
-                                                             join homes h on contracts.homeId = h.id join users u on contracts.userId = u.id
+                                                             join homes h on contracts.homeId = h.id
+                                                             join users u on contracts.userId = u.id
                                                     where h.userId = ${id}`);
+        };
+        this.getIncome = async (time) => {
+            return await this.contractRepository.query(`select SUM(totalPrice) as income
+                                                    from contracts
+                                                    where timeEnd like '${time}%'`);
         };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.contractRepository = data_source_1.AppDataSource.getRepository(contracts_1.Contracts);

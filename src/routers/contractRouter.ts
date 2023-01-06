@@ -7,4 +7,5 @@ contractRouter.get('/', contractController.showContracts);
 contractRouter.get('/:id', contractController.findByUserId);
 contractRouter.post('/', contractController.createContract);
 contractRouter.get('/show/:id', contractController.findByUserCreate);
+contractRouter.post('/income', contractController.getIncome)
 
