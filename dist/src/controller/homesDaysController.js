@@ -90,10 +90,17 @@ class HomesDaysController {
             }
         };
         this.deleteHomesDays = async (req, res) => {
-            await this.homesDaysService.removeHomesDays(req.body);
-            res.json({
-                mess: "Delete success",
-            });
+            try {
+                await this.homesDaysService.removeHomesDays(req.params.id);
+                res.json({
+                    mess: "Delete success",
+                });
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
         };
         this.homesDaysService = new homesDaysService_1.HomesDaysService();
     }

@@ -18,7 +18,7 @@ class HomesDaysService {
             return homesDays;
         };
         this.removeHomesDays = async (idContract) => {
-            let homesDays = await this.homesDaysService.delete(idContract);
+            let homesDays = await this.homesDaysService.query(`DELETE from homes_days where idContract = ${idContract}`);
             return homesDays;
         };
         data_source_1.AppDataSource.initialize().then(connection => {

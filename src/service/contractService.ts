@@ -23,7 +23,7 @@ export class ContractService {
     }
 
     findByUserId = async (id) => {
-        return await this.contractRepository.query(`select h.name, totalPrice, contracts.timeStart, contracts.timeEnd
+        return await this.contractRepository.query(`select contracts.id, h.name, totalPrice, contracts.timeStart, contracts.timeEnd
                                                     from contracts
                                                              join homes h on contracts.homeId = h.id
                                                     where contracts.userId = ${id};`)
@@ -46,5 +46,9 @@ export class ContractService {
         return await this.contractRepository.query(`select SUM(totalPrice) as income
                                                     from contracts
                                                     where timeEnd like '${time}%'`)
+    }
+
+    remove = async (idDelete) => {
+        await this.contractRepository.delete({id: idDelete});
     }
 }

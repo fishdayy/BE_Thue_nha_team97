@@ -23,7 +23,7 @@ export class HomesDaysService {
         return homesDays
     }
     removeHomesDays = async (idContract)=>{
-        let homesDays = await this.homesDaysService.delete(idContract)
+        let homesDays = await this.homesDaysService.query(`DELETE from homes_days where idContract = ${idContract}`)
         return homesDays
     }
 }

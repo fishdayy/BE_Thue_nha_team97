@@ -22,7 +22,7 @@ export class HomesDaysController {
         for (const item of dateArray) {
             let time = item.toString()
             try {
-                await this.homesDaysService.createHomesDays(time, homeId,idContract);
+                await this.homesDaysService.createHomesDays(time, homeId, idContract);
             } catch (e) {
                 res.json({
                     mess: e.message
@@ -94,11 +94,17 @@ export class HomesDaysController {
         }
     }
 
-    deleteHomesDays = async (req: Request, res: Response)=>{
-        await this.homesDaysService.removeHomesDays(req.body)
-        res.json({
-            mess:"Delete success",
-        })
+    deleteHomesDays = async (req: Request, res: Response) => {
+        try {
+            await this.homesDaysService.removeHomesDays(req.params.id)
+            res.json({
+                mess: "Delete success",
+            })
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
     }
 }
 

@@ -5,4 +5,4 @@ export const homesDaysRouter = Router()
 homesDaysRouter.post('/',homesDaysController.createHomesDays);
 homesDaysRouter.post('/check',homesDaysController.checkHomesDays);
 homesDaysRouter.post('/check-time',homesDaysController.checkTimeHomesDays);
-homesDaysRouter.delete("/",homesDaysController.deleteHomesDays)
+homesDaysRouter.delete("/:id",homesDaysController.deleteHomesDays)

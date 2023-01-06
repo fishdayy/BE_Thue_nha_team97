@@ -66,6 +66,19 @@ export class ContractController {
         }
     }
 
+    remove = async (req: Request, res: Response) => {
+        try {
+            await this.contractService.remove(req.params.id)
+            res.json({
+                idContract: req.params.id,
+                mess: "Xóa Contract thành công"
+            })
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
 }
 
 export default new ContractController();

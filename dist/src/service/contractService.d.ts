@@ -7,4 +7,5 @@ export declare class ContractService {
     findByUserId: (id: any) => Promise<any>;
     findByUserCreate: (id: any) => Promise<any>;
     getIncome: (time: any) => Promise<any>;
+    remove: (idDelete: any) => Promise<void>;
 }

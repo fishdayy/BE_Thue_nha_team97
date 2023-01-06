@@ -62,6 +62,20 @@ class ContractController {
                 });
             }
         };
+        this.remove = async (req, res) => {
+            try {
+                await this.contractService.remove(req.params.id);
+                res.json({
+                    idContract: req.params.id,
+                    mess: "Xóa Contract thành công"
+                });
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.contractService = new contractService_1.ContractService();
     }
 }
