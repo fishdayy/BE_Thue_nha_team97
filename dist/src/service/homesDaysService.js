@@ -13,6 +13,10 @@ class HomesDaysService {
             let homesDays = await this.homesDaysService.findBy({ homeId: id });
             return homesDays;
         };
+        this.findByTime = async (data) => {
+            let homesDays = await this.homesDaysService.findBy({ time: data });
+            return homesDays;
+        };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.homesDaysService = data_source_1.AppDataSource.getRepository(homesDays_1.HomesDays);
         });

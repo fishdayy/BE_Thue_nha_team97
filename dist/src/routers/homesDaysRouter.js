@@ -9,4 +9,5 @@ const homesDaysController_1 = __importDefault(require("../controller/homesDaysCo
 exports.homesDaysRouter = (0, express_1.default)();
 exports.homesDaysRouter.post('/', homesDaysController_1.default.createHomesDays);
 exports.homesDaysRouter.post('/check', homesDaysController_1.default.checkHomesDays);
+exports.homesDaysRouter.post('/check-time', homesDaysController_1.default.checkTimeHomesDays);
 //# sourceMappingURL=homesDaysRouter.js.map

@@ -16,4 +16,8 @@ export class HomesDaysService{
         let homesDays = await this.homesDaysService.findBy({homeId:id})
         return homesDays
     }
+    findByTime = async (data)=>{
+        let homesDays = await this.homesDaysService.findBy({time:data})
+        return homesDays
+    }
 }

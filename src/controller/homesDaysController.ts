@@ -62,6 +62,30 @@ export class HomesDaysController {
             })
         }
     }
+    checkTimeHomesDays = async (req: Request, res: Response)=>{
+        try {
+            let timeStart = req.body.timeStart
+            let timeEnd = req.body.timeEnd
+            let dateArray = [];
+            let currentDate = new Date(timeStart);
+            while (currentDate <= new Date(timeEnd)) {
+                dateArray.push(new Date(currentDate));
+                currentDate.setUTCDate(currentDate.getUTCDate() + 1);
+            }
+            let homeId=[]
+            for (const item of dateArray) {
+                let homesDays = await this.homesDaysService.findByTime(item.toString())
+                homeId.push(homesDays[0].homeId)
+            }
+            res.json({
+                homeId:homeId
+            })
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
 }
 
 export default new HomesDaysController();
