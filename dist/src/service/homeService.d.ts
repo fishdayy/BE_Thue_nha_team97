@@ -1,5 +1,6 @@
 export declare class HomeService {
     private homeRepository;
+    private homesDayRepository;
     constructor();
     getAll: () => Promise<any>;
     changeStatus: (id: any, userId: any) => Promise<any>;
@@ -11,4 +12,5 @@ export declare class HomeService {
     remove: (idDelete: any) => Promise<void>;
     findTop4: () => Promise<any>;
     editHome: (idEdit: any, newHome: any) => Promise<void>;
+    findHomesByTime: (homeIds: any) => Promise<any[]>;
 }

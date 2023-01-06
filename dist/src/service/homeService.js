@@ -3,6 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.HomeService = void 0;
 const data_source_1 = require("../data-source");
 const homes_1 = require("../model/homes");
+;
+const homesDays_1 = require("../model/homesDays");
 class HomeService {
     constructor() {
         this.getAll = async () => {
@@ -72,7 +74,13 @@ class HomeService {
             await this.homeRepository.delete({ id: idDelete });
         };
         this.findTop4 = async () => {
-            return await this.homeRepository.query(`select h.price, h.id, h.address, h.avatar, contracts.homeId, h.name, COUNT(homeId) as hire
+            return await this.homeRepository.query(`select h.price,
+                                                       h.id,
+                                                       h.address,
+                                                       h.avatar,
+                                                       contracts.homeId,
+                                                       h.name,
+                                                       COUNT(homeId) as hire
                                                 from contracts
                                                          join homes h on contracts.homeId = h.id
                                                 group by contracts.homeId
@@ -81,8 +89,30 @@ class HomeService {
         this.editHome = async (idEdit, newHome) => {
             await this.homeRepository.update({ id: idEdit }, newHome);
         };
+        this.findHomesByTime = async (homeIds) => {
+            let listHomeId = await this.homeRepository.query(`select id
+                                                          from homes
+                                                          where status = "Available"`);
+            let homeIdFind = [];
+            for (let i = 0; i < listHomeId.length; i++) {
+                if (!homeIds.includes(listHomeId[i].id)) {
+                    homeIdFind.push(listHomeId[i]);
+                }
+            }
+            let homes = await this.homeRepository.findBy({ status: "Available" });
+            let homesFind = [];
+            for (let i = 0; i < homes.length; i++) {
+                for (let j = 0; j < homeIdFind.length; j++) {
+                    if (homes[i].id === homeIdFind[j].id) {
+                        homesFind.push(homes[i]);
+                    }
+                }
+            }
+            return homesFind;
+        };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.homeRepository = data_source_1.AppDataSource.getRepository(homes_1.Homes);
+            this.homesDayRepository = data_source_1.AppDataSource.getRepository(homesDays_1.HomesDays);
         });
     }
 }

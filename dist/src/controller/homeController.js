@@ -15,6 +15,17 @@ class HomeController {
                 });
             }
         };
+        this.findHomesByTime = async (req, res) => {
+            try {
+                let homes = await this.homeService.findHomesByTime(req.body.homeIds);
+                res.json(homes);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.createHome = async (req, res) => {
             try {
                 let { id } = await this.homeService.createHome(req.body);

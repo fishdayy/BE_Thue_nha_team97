@@ -19,6 +19,17 @@ export class HomeController {
         }
     }
 
+    findHomesByTime = async (req: Request, res: Response) => {
+        try {
+            let homes = await this.homeService.findHomesByTime(req.body.homeIds);
+            res.json(homes)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
+
     createHome = async (req: Request, res: Response) => {
         try {
             let {id} = await this.homeService.createHome(req.body);

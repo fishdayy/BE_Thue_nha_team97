@@ -1,12 +1,17 @@
 import {AppDataSource} from "../data-source";
 import {Homes} from "../model/homes";
 
+;
+import {HomesDays} from "../model/homesDays";
+
 export class HomeService {
     private homeRepository: any;
+    private homesDayRepository: any;
 
     constructor() {
         AppDataSource.initialize().then(connection => {
             this.homeRepository = AppDataSource.getRepository(Homes);
+            this.homesDayRepository = AppDataSource.getRepository(HomesDays)
         })
     }
 
@@ -84,7 +89,13 @@ export class HomeService {
     }
 
     findTop4 = async () => {
-        return await this.homeRepository.query(`select h.price, h.id, h.address, h.avatar, contracts.homeId, h.name, COUNT(homeId) as hire
+        return await this.homeRepository.query(`select h.price,
+                                                       h.id,
+                                                       h.address,
+                                                       h.avatar,
+                                                       contracts.homeId,
+                                                       h.name,
+                                                       COUNT(homeId) as hire
                                                 from contracts
                                                          join homes h on contracts.homeId = h.id
                                                 group by contracts.homeId
@@ -93,5 +104,27 @@ export class HomeService {
 
     editHome = async (idEdit, newHome) => {
         await this.homeRepository.update({id: idEdit}, newHome)
+    }
+
+    findHomesByTime = async (homeIds) => {
+        let listHomeId = await this.homeRepository.query(`select id
+                                                          from homes
+                                                          where status = "Available"`)
+        let homeIdFind = []
+        for (let i = 0; i < listHomeId.length; i++) {
+            if (!homeIds.includes(listHomeId[i].id)) {
+                homeIdFind.push(listHomeId[i])
+            }
+        }
+        let homes = await this.homeRepository.findBy({status: "Available"})
+        let homesFind = []
+        for (let i = 0; i < homes.length; i++) {
+            for (let j = 0; j < homeIdFind.length; j++) {
+                if (homes[i].id === homeIdFind[j].id) {
+                    homesFind.push(homes[i])
+                }
+            }
+        }
+        return homesFind
     }
 }

@@ -17,4 +17,5 @@ exports.homeRouter.delete('/:id', homeController_1.default.remove);
 exports.homeRouter.put('/:id', homeController_1.default.changeStatus);
 exports.homeRouter.get('/show/top4', homeController_1.default.findTop4);
 exports.homeRouter.put('/edit/:id', homeController_1.default.editHome);
+exports.homeRouter.post('/find/by-time', homeController_1.default.findHomesByTime);
 //# sourceMappingURL=homeRouter.js.map

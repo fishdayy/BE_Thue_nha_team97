@@ -3,6 +3,7 @@ export declare class HomeController {
     private homeService;
     constructor();
     showHomes: (req: Request, res: Response) => Promise<void>;
+    findHomesByTime: (req: Request, res: Response) => Promise<void>;
     createHome: (req: Request, res: Response) => Promise<void>;
     findHomes: (req: Request, res: Response) => Promise<void>;
     findById: (req: Request, res: Response) => Promise<void>;

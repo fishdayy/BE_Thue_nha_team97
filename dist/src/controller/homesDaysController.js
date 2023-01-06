@@ -72,7 +72,11 @@ class HomesDaysController {
                 let homeId = [];
                 for (const item of dateArray) {
                     let homesDays = await this.homesDaysService.findByTime(item.toString());
-                    homeId.push(homesDays[0].homeId);
+                    for (const day of homesDays) {
+                        if (!homeId.includes(day.homeId)) {
+                            homeId.push(day.homeId);
+                        }
+                    }
                 }
                 res.json({
                     homeId: homeId

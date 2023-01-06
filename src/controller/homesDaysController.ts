@@ -47,8 +47,8 @@ export class HomesDaysController {
             let check = true
             for (const item of dateArray) {
                 for (const item2 of homesDays) {
-                    if (item.toString()===item2.time){
-                        check=false;
+                    if (item.toString() === item2.time) {
+                        check = false;
                         break;
                     }
                 }
@@ -62,7 +62,7 @@ export class HomesDaysController {
             })
         }
     }
-    checkTimeHomesDays = async (req: Request, res: Response)=>{
+    checkTimeHomesDays = async (req: Request, res: Response) => {
         try {
             let timeStart = req.body.timeStart
             let timeEnd = req.body.timeEnd
@@ -72,13 +72,18 @@ export class HomesDaysController {
                 dateArray.push(new Date(currentDate));
                 currentDate.setUTCDate(currentDate.getUTCDate() + 1);
             }
-            let homeId=[]
+            let homeId = []
             for (const item of dateArray) {
                 let homesDays = await this.homesDaysService.findByTime(item.toString())
-                homeId.push(homesDays[0].homeId)
+                for (const day of homesDays) {
+                    if (!homeId.includes(day.homeId)) {
+                        homeId.push(day.homeId)
+                    }
+                }
             }
+
             res.json({
-                homeId:homeId
+                homeId: homeId
             })
         } catch (e) {
             res.json({
