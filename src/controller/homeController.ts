@@ -111,6 +111,19 @@ export class HomeController {
             })
         }
     }
+
+    editHome = async (req: Request, res: Response) => {
+        try {
+            await this.homeService.editHome(req.params.id, req.body);
+            res.json({
+                mess: "Sửa Home thành công"
+            })
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
 }
 
 export default new HomeController();

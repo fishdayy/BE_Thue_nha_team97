@@ -50,6 +50,7 @@ class HomeService {
                                                        price,
                                                        address,
                                                        description,
+                                                       homes.categoryId,
                                                        c.name as category,
                                                        bedroom,
                                                        bathroom,
@@ -76,6 +77,9 @@ class HomeService {
                                                          join homes h on contracts.homeId = h.id
                                                 group by contracts.homeId
                                                 order by hire desc limit 4`);
+        };
+        this.editHome = async (idEdit, newHome) => {
+            await this.homeRepository.update({ id: idEdit }, newHome);
         };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.homeRepository = data_source_1.AppDataSource.getRepository(homes_1.Homes);

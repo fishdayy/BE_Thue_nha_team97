@@ -108,6 +108,19 @@ class HomeController {
                 });
             }
         };
+        this.editHome = async (req, res) => {
+            try {
+                await this.homeService.editHome(req.params.id, req.body);
+                res.json({
+                    mess: "Sửa Home thành công"
+                });
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.homeService = new homeService_1.HomeService();
     }
 }
