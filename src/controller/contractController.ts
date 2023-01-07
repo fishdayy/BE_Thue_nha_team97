@@ -57,7 +57,7 @@ export class ContractController {
 
     getIncome = async (req: Request, res: Response) => {
         try {
-            let income = await this.contractService.getIncome(req.body.timeFind)
+            let income = await this.contractService.getIncome(req.body.timeFind, req.params.id)
             res.json(income)
         } catch (e) {
             res.json({

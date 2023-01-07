@@ -42,10 +42,10 @@ export class ContractService {
                                                     where h.userId = ${id}`)
     }
 
-    getIncome = async (time) => {
+    getIncome = async (time, userId) => {
         return await this.contractRepository.query(`select SUM(totalPrice) as income
-                                                    from contracts
-                                                    where timeEnd like '${time}%'`)
+                                                    from contracts join homes h on contracts.homeId = h.id
+                                                    where h.userId = ${userId} AND timeEnd like '${time}%'`)
     }
 
     remove = async (idDelete) => {

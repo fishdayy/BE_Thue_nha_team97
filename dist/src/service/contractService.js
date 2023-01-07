@@ -31,10 +31,10 @@ class ContractService {
                                                              join users u on contracts.userId = u.id
                                                     where h.userId = ${id}`);
         };
-        this.getIncome = async (time) => {
+        this.getIncome = async (time, userId) => {
             return await this.contractRepository.query(`select SUM(totalPrice) as income
-                                                    from contracts
-                                                    where timeEnd like '${time}%'`);
+                                                    from contracts join homes h on contracts.homeId = h.id
+                                                    where h.userId = ${userId} AND timeEnd like '${time}%'`);
         };
         this.remove = async (idDelete) => {
             await this.contractRepository.delete({ id: idDelete });
