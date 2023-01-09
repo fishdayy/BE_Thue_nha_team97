@@ -68,24 +68,31 @@ class UserService {
         };
         this.checkChangePassword = async (idUser, oldPassword, newPassword) => {
             let user = {
-                check: false,
+                check: 0,
                 userFind: []
             };
             let userFind = await this.userRepository.findBy({ id: idUser });
             if (userFind.length === 0) {
-                user.check = false;
+                user.check = 0;
             }
             else {
                 let compare = await bcrypt_1.default.compare(oldPassword, userFind[0].password);
                 if (!compare) {
                     user.userFind = userFind;
-                    user.check = false;
+                    user.check = 0;
                 }
                 if (compare) {
-                    newPassword = await bcrypt_1.default.hash(newPassword, 10);
-                    await this.userRepository.update({ id: idUser }, { password: newPassword });
-                    user.check = true;
-                    user.userFind = userFind;
+                    let compare2 = await bcrypt_1.default.compare(newPassword, userFind[0].password);
+                    if (compare2) {
+                        user.userFind = userFind;
+                        user.check = 2;
+                    }
+                    if (!compare2) {
+                        newPassword = await bcrypt_1.default.hash(newPassword, 10);
+                        await this.userRepository.update({ id: idUser }, { password: newPassword });
+                        user.check = 1;
+                        user.userFind = userFind;
+                    }
                 }
             }
             return user;

@@ -66,16 +66,22 @@ class UserController {
         this.changePassword = async (req, res) => {
             try {
                 let user = await this.userService.checkChangePassword(req.params.id, req.body.oldPassword, req.body.newPassword);
-                if (!user.check) {
+                if (user.check === 0) {
                     res.json({
                         user,
                         mess: "Old Password Is Not Correct"
                     });
                 }
-                else {
+                if (user.check === 1) {
                     res.json({
                         user,
                         mess: "Change Password Successfully"
+                    });
+                }
+                if (user.check === 2) {
+                    res.json({
+                        user,
+                        mess: "Don't use old passwords!"
                     });
                 }
             }

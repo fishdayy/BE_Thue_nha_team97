@@ -10,7 +10,7 @@ export declare class UserService {
     createUser: (user: any) => Promise<any>;
     checkLoginFb: (userFb: any) => Promise<any>;
     checkChangePassword: (idUser: any, oldPassword: any, newPassword: any) => Promise<{
-        check: boolean;
+        check: number;
         userFind: any[];
     }>;
     updateProfile: (idUser: any, newFullName: any, newJob: any, newAddress: any, newPhone: any, newEmail: any, newAvatar: any) => Promise<{
