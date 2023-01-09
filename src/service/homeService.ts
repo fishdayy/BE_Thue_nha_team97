@@ -91,6 +91,7 @@ export class HomeService {
     findTop4 = async () => {
         return await this.homeRepository.query(`select h.price,
                                                        h.id,
+                                                       h.status,
                                                        h.address,
                                                        h.avatar,
                                                        contracts.homeId,
@@ -98,6 +99,7 @@ export class HomeService {
                                                        COUNT(homeId) as hire
                                                 from contracts
                                                          join homes h on contracts.homeId = h.id
+                                                where h.status = "Available"
                                                 group by contracts.homeId
                                                 order by hire desc limit 4`)
     }

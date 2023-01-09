@@ -30,7 +30,7 @@ __decorate([
     __metadata("design:type", String)
 ], Homes.prototype, "address", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'varchar' }),
+    (0, typeorm_1.Column)({ type: 'longtext' }),
     __metadata("design:type", String)
 ], Homes.prototype, "description", void 0);
 __decorate([
