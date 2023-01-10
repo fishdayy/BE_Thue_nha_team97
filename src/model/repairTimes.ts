@@ -1,15 +1,13 @@
 import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity()
-export class HomesDays{
+export class repairTimes {
     @PrimaryGeneratedColumn({type: 'int'})
     public id: number;
     @Column({type: 'int'})
     public homeId: number;
     @Column({type: 'varchar'})
-    public time: string;
-    @Column({type: 'int', default: 0})
-    public idContract: number;
-    @Column({type: 'int', default: 0})
-    public idRepairTime: number;
+    public timeStart: string;
+    @Column({type: 'varchar'})
+    public timeEnd: string;
 }

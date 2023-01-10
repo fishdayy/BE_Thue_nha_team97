@@ -9,32 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.HomesDays = void 0;
+exports.repairTimes = void 0;
 const typeorm_1 = require("typeorm");
-let HomesDays = class HomesDays {
+let repairTimes = class repairTimes {
 };
 __decorate([
     (0, typeorm_1.PrimaryGeneratedColumn)({ type: 'int' }),
     __metadata("design:type", Number)
-], HomesDays.prototype, "id", void 0);
+], repairTimes.prototype, "id", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'int' }),
     __metadata("design:type", Number)
-], HomesDays.prototype, "homeId", void 0);
+], repairTimes.prototype, "homeId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
-], HomesDays.prototype, "time", void 0);
+], repairTimes.prototype, "timeStart", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ type: 'int', default: 0 }),
-    __metadata("design:type", Number)
-], HomesDays.prototype, "idContract", void 0);
-__decorate([
-    (0, typeorm_1.Column)({ type: 'int', default: 0 }),
-    __metadata("design:type", Number)
-], HomesDays.prototype, "idRepairTime", void 0);
-HomesDays = __decorate([
+    (0, typeorm_1.Column)({ type: 'varchar' }),
+    __metadata("design:type", String)
+], repairTimes.prototype, "timeEnd", void 0);
+repairTimes = __decorate([
     (0, typeorm_1.Entity)()
-], HomesDays);
-exports.HomesDays = HomesDays;
-//# sourceMappingURL=homesDays.js.map
+], repairTimes);
+exports.repairTimes = repairTimes;
+//# sourceMappingURL=repairTimes.js.map

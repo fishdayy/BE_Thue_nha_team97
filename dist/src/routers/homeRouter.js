@@ -14,7 +14,6 @@ exports.homeRouter.get('/:id', homeController_1.default.findById);
 exports.homeRouter.get('/list-home/:id', homeController_1.default.findListHomeByUserId);
 exports.homeRouter.get('/find-by-category/:id', homeController_1.default.findByCategory);
 exports.homeRouter.delete('/:id', homeController_1.default.remove);
-exports.homeRouter.put('/:id', homeController_1.default.changeStatus);
 exports.homeRouter.get('/show/top4', homeController_1.default.findTop4);
 exports.homeRouter.put('/edit/:id', homeController_1.default.editHome);
 exports.homeRouter.post('/find/by-time', homeController_1.default.findHomesByTime);

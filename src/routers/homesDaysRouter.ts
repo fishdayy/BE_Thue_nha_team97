@@ -6,3 +6,4 @@ homesDaysRouter.post('/',homesDaysController.createHomesDays);
 homesDaysRouter.post('/check',homesDaysController.checkHomesDays);
 homesDaysRouter.post('/check-time',homesDaysController.checkTimeHomesDays);
 homesDaysRouter.delete("/:id",homesDaysController.deleteHomesDays)
+homesDaysRouter.delete("/remove/:id",homesDaysController.deleteHomesDays2)

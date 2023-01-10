@@ -97,17 +97,6 @@ class HomeController {
                 });
             }
         };
-        this.changeStatus = async (req, res) => {
-            try {
-                let homes = await this.homeService.changeStatus(req.params.id, req.body.userId);
-                res.json(homes);
-            }
-            catch (e) {
-                res.json({
-                    mess: e.message
-                });
-            }
-        };
         this.findTop4 = async (req, res) => {
             try {
                 let homes = await this.homeService.findTop4();

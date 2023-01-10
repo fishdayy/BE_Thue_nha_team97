@@ -1,15 +1,12 @@
 import {AppDataSource} from "../data-source";
 import {Contracts} from "../model/contracts";
-import {Homes} from "../model/homes";
 
 export class ContractService {
     private contractRepository: any;
-    private homeRepository: any;
 
     constructor() {
         AppDataSource.initialize().then(connection => {
             this.contractRepository = AppDataSource.getRepository(Contracts);
-            this.homeRepository = AppDataSource.getRepository(Homes);
         })
     }
 

@@ -19,17 +19,6 @@ export class HomeService {
         return await this.homeRepository.findBy({status: "Available"})
     }
 
-    changeStatus = async (id, userId) => {
-        let home = await this.homeRepository.findBy({id: id})
-        if (home[0].status === 'Available') {
-            await this.homeRepository.update({id: id}, {status: 'Repair'})
-        } else {
-            await this.homeRepository.update({id: id}, {status: 'Available'})
-        }
-        let homes = await this.homeRepository.findBy({userId: userId})
-        return homes
-    }
-
     createHome = async (home) => {
         let homeC = await this.homeRepository.save(home);
         return homeC

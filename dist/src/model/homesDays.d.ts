@@ -3,4 +3,5 @@ export declare class HomesDays {
     homeId: number;
     time: string;
     idContract: number;
+    idRepairTime: number;
 }

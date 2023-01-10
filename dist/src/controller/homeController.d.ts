@@ -10,7 +10,6 @@ export declare class HomeController {
     findListHomeByUserId: (req: Request, res: Response) => Promise<void>;
     findByCategory: (req: Request, res: Response) => Promise<void>;
     remove: (req: Request, res: Response) => Promise<void>;
-    changeStatus: (req: Request, res: Response) => Promise<void>;
     findTop4: (req: Request, res: Response) => Promise<void>;
     editHome: (req: Request, res: Response) => Promise<void>;
 }

@@ -10,8 +10,8 @@ export class HomesDaysService {
         })
     }
 
-    createHomesDays = async (time, homeId, idContract) => {
-        let homesDays = await this.homesDaysService.insert({time: time, homeId: homeId,idContract:idContract});
+    createHomesDays = async (time, homeId, idContract, idRepairTime) => {
+        let homesDays = await this.homesDaysService.insert({time: time, homeId: homeId,idContract:idContract, idRepairTime: idRepairTime});
         return homesDays
     }
     findByHomesDays = async (id) => {
@@ -22,8 +22,13 @@ export class HomesDaysService {
         let homesDays = await this.homesDaysService.findBy({time: data})
         return homesDays
     }
-    removeHomesDays = async (idContract)=>{
-        let homesDays = await this.homesDaysService.query(`DELETE from homes_days where idContract = ${idContract}`)
+    removeHomesDays = async (id)=>{
+        let homesDays = await this.homesDaysService.query(`DELETE from homes_days where idContract = ${id}`)
+        return homesDays
+    }
+
+    removeHomesDays2 = async (id)=>{
+        let homesDays = await this.homesDaysService.query(`DELETE from homes_days where idRepairTime = ${id}`)
         return homesDays
     }
 }

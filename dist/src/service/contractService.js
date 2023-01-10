@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ContractService = void 0;
 const data_source_1 = require("../data-source");
 const contracts_1 = require("../model/contracts");
-const homes_1 = require("../model/homes");
 class ContractService {
     constructor() {
         this.getAll = async () => {
@@ -41,7 +40,6 @@ class ContractService {
         };
         data_source_1.AppDataSource.initialize().then(connection => {
             this.contractRepository = data_source_1.AppDataSource.getRepository(contracts_1.Contracts);
-            this.homeRepository = data_source_1.AppDataSource.getRepository(homes_1.Homes);
         });
     }
 }

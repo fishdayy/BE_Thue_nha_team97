@@ -11,4 +11,5 @@ exports.homesDaysRouter.post('/', homesDaysController_1.default.createHomesDays)
 exports.homesDaysRouter.post('/check', homesDaysController_1.default.checkHomesDays);
 exports.homesDaysRouter.post('/check-time', homesDaysController_1.default.checkTimeHomesDays);
 exports.homesDaysRouter.delete("/:id", homesDaysController_1.default.deleteHomesDays);
+exports.homesDaysRouter.delete("/remove/:id", homesDaysController_1.default.deleteHomesDays2);
 //# sourceMappingURL=homesDaysRouter.js.map

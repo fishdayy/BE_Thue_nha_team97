@@ -101,17 +101,6 @@ export class HomeController {
         }
     }
 
-    changeStatus = async (req: Request, res: Response) => {
-        try {
-            let homes = await this.homeService.changeStatus(req.params.id, req.body.userId)
-            res.json(homes)
-        } catch (e) {
-            res.json({
-                mess: e.message
-            })
-        }
-    }
-
     findTop4 = async (req: Request, res: Response) => {
         try {
             let homes = await this.homeService.findTop4();
