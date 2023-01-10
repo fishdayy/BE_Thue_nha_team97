@@ -21,5 +21,6 @@ exports.router.use('/imageHomes', imageHomeRouter_1.imageHomeRouter);
 exports.router.use('/contracts', contractRouter_1.contractRouter);
 exports.router.use('/homes-days', homesDaysRouter_1.homesDaysRouter);
 exports.router.use('/repair-times', repairTimes_1.repairTimesRouter);
+exports.router.use('/homes-days', homesDaysRouter_1.homesDaysRouter);
 exports.router.use('/comment', commentRouter_1.commentRouter);
 //# sourceMappingURL=router.js.map

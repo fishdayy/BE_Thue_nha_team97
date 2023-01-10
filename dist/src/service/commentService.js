@@ -6,7 +6,7 @@ const comment_1 = require("../model/comment");
 class CommentService {
     constructor() {
         this.getAll = async (id) => {
-            return await this.commentRepository.query(`select username,comment from users join comment on comment.userId=users.id where comment.homeId=${id}`);
+            return await this.commentRepository.query(`select username,comment,avatar from users join comment on comment.userId=users.id where comment.homeId=${id}`);
         };
         this.createComment = async (comment) => {
             let comments = await this.commentRepository.save(comment);
