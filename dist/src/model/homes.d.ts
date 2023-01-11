@@ -10,4 +10,5 @@ export declare class Homes {
     status: string;
     userId: number;
     avatar: string;
+    star: number;
 }

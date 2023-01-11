@@ -124,6 +124,17 @@ export class HomeController {
             })
         }
     }
+
+    getStar = async (req: Request, res: Response) => {
+        try {
+            let home = await this.homeService.getStar(req.params.id)
+            res.json(home)
+        } catch (e) {
+            res.json({
+                mess: e.message
+            })
+        }
+    }
 }
 
 export default new HomeController();

@@ -121,6 +121,17 @@ class HomeController {
                 });
             }
         };
+        this.getStar = async (req, res) => {
+            try {
+                let home = await this.homeService.getStar(req.params.id);
+                res.json(home);
+            }
+            catch (e) {
+                res.json({
+                    mess: e.message
+                });
+            }
+        };
         this.homeService = new homeService_1.HomeService();
     }
 }

@@ -3,4 +3,5 @@ export declare class Comment {
     homeId: number;
     userId: number;
     comment: string;
+    star: number;
 }

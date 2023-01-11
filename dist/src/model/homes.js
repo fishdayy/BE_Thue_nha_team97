@@ -57,6 +57,10 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'varchar', default: "https://a0.muscache.com/im/pictures/9eef66f8-2b2a-4be1-8e84-a7785a4b94c4.jpg?im_w=720" }),
     __metadata("design:type", String)
 ], Homes.prototype, "avatar", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'int', default: 0 }),
+    __metadata("design:type", Number)
+], Homes.prototype, "star", void 0);
 Homes = __decorate([
     (0, typeorm_1.Entity)()
 ], Homes);

@@ -10,7 +10,7 @@ export class CommentService{
         })
     }
     getAll = async (id) => {
-        return await this.commentRepository.query(`select username,comment,avatar from users join comment on comment.userId=users.id where comment.homeId=${id}`)
+        return await this.commentRepository.query(`select username,comment,avatar,star from users join comment on comment.userId=users.id where comment.homeId=${id}`)
     }
 
     createComment = async (comment) => {

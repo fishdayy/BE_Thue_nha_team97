@@ -58,11 +58,11 @@ export class HomeService {
                                                        bathroom,
                                                        status,
                                                        userId,
-                                                       avatar
+                                                       avatar,
+                                                       star
                                                 from homes
                                                          join categories c on homes.categoryId = c.id
-                                                where homes.id = ${id}
-                                                  AND status = 'Available'`)
+                                                where homes.id = ${id}`)
     }
 
     findListHome = async (id) => {
@@ -117,5 +117,31 @@ export class HomeService {
             }
         }
         return homesFind
+    }
+
+    getStar = async (id) => {
+        await this.homeRepository.query(`UPDATE homes
+                                                set homes.star = (select AVG(star)
+                                                                  from comment
+                                                                  where star <> 0
+                                                                    AND homeId = ${id})
+                                                where homes.id = ${id}`)
+        let home = await this.homeRepository.query(`select homes.id,
+                                                       homes.name,
+                                                       price,
+                                                       address,
+                                                       description,
+                                                       homes.categoryId,
+                                                       c.name as category,
+                                                       bedroom,
+                                                       bathroom,
+                                                       status,
+                                                       userId,
+                                                       avatar,
+                                                       star
+                                                from homes
+                                                         join categories c on homes.categoryId = c.id
+                                                where homes.id = ${id}`)
+        return home
     }
 }

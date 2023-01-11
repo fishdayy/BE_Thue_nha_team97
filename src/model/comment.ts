@@ -10,4 +10,6 @@ export class Comment{
     public userId: number;
     @Column({type: 'varchar'})
     public comment: string;
+    @Column({type: 'int', default: 0})
+    public star: number;
 }

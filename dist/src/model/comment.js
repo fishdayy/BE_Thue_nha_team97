@@ -29,6 +29,10 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
 ], Comment.prototype, "comment", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'int', default: 0 }),
+    __metadata("design:type", Number)
+], Comment.prototype, "star", void 0);
 Comment = __decorate([
     (0, typeorm_1.Entity)()
 ], Comment);

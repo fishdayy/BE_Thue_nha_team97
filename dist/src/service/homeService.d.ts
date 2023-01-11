@@ -12,4 +12,5 @@ export declare class HomeService {
     findTop4: () => Promise<any>;
     editHome: (idEdit: any, newHome: any) => Promise<void>;
     findHomesByTime: (homeIds: any) => Promise<any[]>;
+    getStar: (id: any) => Promise<any>;
 }
