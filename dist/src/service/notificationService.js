@@ -6,7 +6,10 @@ const notification_1 = require("../model/notification");
 class NotificationService {
     constructor() {
         this.getAll = async (id) => {
-            return await this.notificationRepository.query(`select h.name, notification.content, notification.username
+            return await this.notificationRepository.query(`select h.name,
+                                                               notification.content,
+                                                               notification.username,
+                                                               notification.time
                                                         from notification
                                                                  join homes h on h.id = homeId
                                                         where h.userId = ${id}`);

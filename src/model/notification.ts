@@ -10,4 +10,6 @@ export class Notification {
     public homeId: number;
     @Column({type: 'varchar'})
     public content: string;
+    @Column({type: 'varchar'})
+    public time: string;
 }

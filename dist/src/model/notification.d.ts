@@ -3,4 +3,5 @@ export declare class Notification {
     username: string;
     homeId: number;
     content: string;
+    time: string;
 }

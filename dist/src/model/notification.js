@@ -29,6 +29,10 @@ __decorate([
     (0, typeorm_1.Column)({ type: 'varchar' }),
     __metadata("design:type", String)
 ], Notification.prototype, "content", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'varchar' }),
+    __metadata("design:type", String)
+], Notification.prototype, "time", void 0);
 Notification = __decorate([
     (0, typeorm_1.Entity)()
 ], Notification);
